@@ -111,3 +111,9 @@ int name_hash(char* name)
 		(name[1] - 'A') * 26 *10 + (name[2] - 'A') * 10 + name[3] - '0';
 
 }
+//only use standard stdio(scanf and printf): 111ms in the largest data set
+//raw io stream: time limit exceed in the largest data set
+//only optimise input stream: time limit exceed too
+//optimise input and output stream with ios::sync_with_stdio: 99ms, faster than the first!!!
+//use string object instead of char array, use a copy of each string object: about 160ms
+//use reference of a string and io optimization: 111ms
