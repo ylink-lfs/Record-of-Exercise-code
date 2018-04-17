@@ -115,5 +115,6 @@ int name_hash(char* name)
 //raw io stream: time limit exceed in the largest data set
 //only optimise input stream: time limit exceed too
 //optimise input and output stream with ios::sync_with_stdio: 99ms, faster than the first!!!
+//what if we change '\n' to endl? : 162ms, what the fuck...
 //use string object instead of char array, use a copy of each string object: about 160ms
 //use reference of a string and io optimization: 111ms
