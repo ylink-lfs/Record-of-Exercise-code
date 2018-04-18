@@ -35,3 +35,5 @@ public:
         return new_list->next;
     }
 };
+//on most blogs, writers recomment one solotion: get two linked_list length, then move the longer list pointer certain steps. This approach
+//is wrong. exp, two list: 1->2->3  1->2->3->4->5  using that approach ,unable to get 1->2->3
