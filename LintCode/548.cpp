@@ -1,4 +1,5 @@
- //solved after watching hints. BTW, does this problem relate to Binary Division? Actually it uses "2 pointers" skill
+//solved after watching hints. BTW, does this problem relate to Binary Division? Actually it uses "2 pointers" skill
+//http://www.cnblogs.com/grandyang/p/5507129.html here binary search is used
 class Solution {
 public:
     
