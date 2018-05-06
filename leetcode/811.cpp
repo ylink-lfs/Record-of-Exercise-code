@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<string> subdomainVisits(vector<string>& cpdomains) {
-        map<string, int> mymap;
+        unordered_map<string, int> mymap;
         auto vec_it = cpdomains.begin();
         while(vec_it != cpdomains.end())
         {
