@@ -65,7 +65,7 @@ int main(void)
 	for (auto i : res)
 		sum += i;
 	sum /= res.size();
-	fout << "During " << res.size() << "times imitation, the maximum step is " << res[res.size() - 1];
+	fout << "During " << res.size() << " times imitation, the maximum step is " << res[res.size() - 1];
 	fout << ", the minimum step is " << res[0] << ", and the average step is " << sum << ".\n";
 	cout << "Bye!\n";
 	fout << "Log ended\n";
