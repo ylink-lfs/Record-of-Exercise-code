@@ -1,1 +1,0 @@
-//No fucking test. Having wrote multimes of linked list ADT. Spend time on more interesting things.
