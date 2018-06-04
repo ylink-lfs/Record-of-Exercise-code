@@ -1,5 +1,5 @@
 //driver
-//玄学问题...为了编译器报LNK1120找来找去至少十几分钟，之后把函数定义的那个cpp文件exclude再include就好了，烦躁
+//鐜勫闂...涓轰簡缂栬瘧鍣ㄦ姤LNK1120鎵炬潵鎵惧幓鑷冲皯鍗佸嚑鍒嗛挓锛屼箣鍚庢妸鍑芥暟瀹氫箟鐨勯偅涓猚pp鏂囦欢exclude鍐峣nclude灏卞ソ浜嗭紝鐑﹁簛
 #include <iostream>
 #include <cstdlib>
 #include <string>
