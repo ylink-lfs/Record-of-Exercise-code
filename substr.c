@@ -33,7 +33,6 @@ int main(void)
 	return 0;
 }
 
-//Check correctness in Leetcode Prob.28. Use this code to compare with KMP implementation. 
 int brute_substring(const char *src, const char *pattern) 
 {
 	if (src == NULL || pattern == NULL)
@@ -86,7 +85,6 @@ int* get_PMT(const char* pattern)
 		{
 			while (i > 0 && pattern[i] != pattern[j - 1])
 			{
-				//change this argument to i - 1 if error occures
 				i = pmt[i];
 			}
 			if (pattern[i] == pattern[j - 1])
@@ -104,15 +102,6 @@ int* get_PMT(const char* pattern)
 			}
 		}
 	}
-
-	/*
-	for (int index = 0; index < len_pat; index++)
-	{
-		printf("%d ", pmt[index]);
-	}
-	putchar('\n');
-	*/
-
 	return pmt;
 }
 
