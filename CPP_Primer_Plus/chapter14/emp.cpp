@@ -142,3 +142,23 @@ void highfink::SetAll()
 	cout << "Please update reportsto member: ";
 	cin >> ReportsTo();
 }
+
+/*
+1.
+从语义上说，每个人都具有独立性，将一个人对象赋给另一个人对象并没有实际意义
+
+2.
+不同的职位成员需要显示和改变的信息不同
+
+3.
+为了使第三代子类highfink只包含一个abstr_emp基类对象，符合类的目标语义
+
+4.
+highfink类从三个基类公有继承而来，已经继承了三个父类的字段，从而不需要自己的字段
+
+5.
+子类使用该友元函数时会被自动cast到基类
+
+6.
+编译错误。abstr_emp为抽象基类，无法被实例化
+*/
