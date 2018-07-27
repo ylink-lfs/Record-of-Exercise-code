@@ -73,16 +73,16 @@ fraction<T>::fraction(const T nm, const T de)
 {
 	if (de == 0)
 	{
-		throw (std::invalid_argument("Denomiator should not be equal to zero\n"));		
+		throw (std::invalid_argument("Denomiator should not be equal to zero\n"));
 	}
 	else
 	{
 		numerator = std::abs(nm);
 		denominator = std::abs(de);
 		if (numerator == 0)
-			denominator = 1;		
+			denominator = 1;
 		reduction();
-		if (nm * de < 0)
+		if (!(nm >= 0 && de >= 0) && !(nm < 0 && de < 0))
 			numerator *= (-1);
 		current_mode = IMPROPER;
 	}
@@ -100,9 +100,9 @@ fraction<T>::fraction(const std::pair<T, T>& p)
 		numerator = std::abs(p.first);
 		denominator = std::abs(p.second);
 		if (numerator == 0)
-			denominator = 1;		
+			denominator = 1;
 		reduction();
-		if (p.first * p.second < 0)
+		if (!(p.first >= 0 && p.second >= 0) && !(p.first < 0 && p.second < 0))
 			numerator *= (-1);
 		current_mode = IMPROPER;
 	}
@@ -125,7 +125,7 @@ fraction<T>::fraction(const std::string& st)
 		if (numerator == 0)
 			denominator = 1;
 		reduction();
-		if (nm * de < 0)
+		if (!(nm >= 0 && de >= 0) && !(nm < 0 && de < 0))
 			numerator *= (-1);
 		current_mode = IMPROPER;
 	}
