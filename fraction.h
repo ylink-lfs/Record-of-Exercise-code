@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <exception>
 #include <iostream>
+#include <string>
 #include <utility>
 
 //If use non-integer type to initialize the class, then result is undefined
@@ -23,6 +24,7 @@ public:
 	fraction() : numerator(0), denominator(1) {}
 	fraction(const T nm, const T de);
 	fraction(const std::pair<T, T>& p);
+	fraction(const std::string& st);
 
 	fraction<T> operator-() const;
 	fraction<T> operator+(const fraction<T>& fc) const;
@@ -61,7 +63,7 @@ T fraction<T>::fra_LCM(const T a, const T b) const
 template <typename T>
 void fraction<T>::reduction()
 {
-	int shared_divisor = fra_GCD(numerator, denominator);
+	T shared_divisor = fra_GCD(numerator, denominator);
 	numerator /= shared_divisor;
 	denominator /= shared_divisor;
 }
@@ -75,8 +77,8 @@ fraction<T>::fraction(const T nm, const T de)
 	}
 	else
 	{
-		numerator = abs(nm);
-		denominator = abs(de);
+		numerator = std::abs(nm);
+		denominator = std::abs(de);
 		if (numerator == 0)
 			denominator = 1;		
 		reduction();
@@ -91,14 +93,37 @@ fraction<T>::fraction(const std::pair<T, T>& p)
 {
 	if (p.second == 0)
 	{
-		throw (std::invalid_argument());
+		throw (std::invalid_argument("Denomiator should not be equal to zero\n"));
 	}
 	else
 	{
-		numerator = abs(p.first);
-		denominator = abs(p.second);
+		numerator = std::abs(p.first);
+		denominator = std::abs(p.second);
 		if (numerator == 0)
 			denominator = 1;		
+		reduction();
+		if (p.first * p.second < 0)
+			numerator *= (-1);
+		current_mode = IMPROPER;
+	}
+}
+
+template <typename T>
+fraction<T>::fraction(const std::string& st)
+{
+	int div_pos = st.find('/');
+	int nm = std::stoi(st.substr(0, div_pos));
+	int de = std::stoi(st.substr(div_pos + 1, st.size() - 1 - div_pos));
+	if (de == 0)
+	{
+		throw (std::invalid_argument("Denomiator should not be equal to zero\n"));
+	}
+	else
+	{
+		numerator = std::abs(nm);
+		denominator = std::abs(de);
+		if (numerator == 0)
+			denominator = 1;
 		reduction();
 		if (nm * de < 0)
 			numerator *= (-1);
@@ -139,13 +164,18 @@ fraction<T> fraction<T>::operator/(const fraction<T>& fc) const
 template <typename T>
 void fraction<T>::show() const
 {
-	switch (current_mode)
+	if (denominator == 1)
+		std::cout << numerator;
+	else
 	{
-	case IMPROPER:
-		cout << numerator << '/' << denominator;
-		break;
-	case MIXED:
-		cout << numerator / denominator << ' ' << abs(numerator) % denominator << '/' << denominator;
-		break;
+		switch (current_mode)
+		{
+		case IMPROPER:
+			std::cout << numerator << '/' << denominator;
+			break;
+		case MIXED:
+			std::cout << numerator / denominator << ' ' << std::abs(numerator) % denominator << '/' << denominator;
+			break;
+		}
 	}
 }
