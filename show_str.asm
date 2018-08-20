@@ -23,6 +23,9 @@ start:
 ;ds:[si]: Address of the string
 ;Note: This function changes the value of si.
 show_str:
+	push bp
+	push ex
+	push si
 	mov bp, 0
 	mov al, 0a0h
 	mul dh
@@ -43,6 +46,9 @@ show_str:
 		mov al, ds:[si]
 		jmp iterate
 	goodbye:
+		pop si
+		pop ex
+		pop bp
 		ret
 
 code ends
