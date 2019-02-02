@@ -50,7 +50,7 @@ int main(void)
 	while (getline(cin, s))
 	{
 		auto result = manacher(s);
-		cout << result.first << '\n';
+		cout << result.first << ' ' << result.second << '\n';
 	}
 	return 0;
 }
