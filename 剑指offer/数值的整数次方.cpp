@@ -12,10 +12,7 @@ public:
             double b = base;
             if(exponent > 0)
             {
-                for(int i = 1; i < exponent; i++)
-                {
-                    base *= b;
-                }
+                base = positive_power(base, exponent);
             }
             else
             {
@@ -27,5 +24,26 @@ public:
             
         }
         return base;
+    }
+    
+    double positive_power(const double base, const int exponent)
+    {
+        if(exponent == 0)
+        {
+            return 1;
+        }
+        else if(exponent == 1)
+        {
+            return base;
+        }
+        else if(exponent % 2 == 1)
+        {
+            return base * positive_power(base, exponent - 1);
+        }
+        else
+        {
+            double half_res = positive_power(base, exponent / 2);
+            return half_res * half_res; 
+        }
     }
 };
