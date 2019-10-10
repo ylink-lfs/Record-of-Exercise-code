@@ -1,0 +1,58 @@
+/*
+struct ListNode {
+    int val;
+    struct ListNode *next;
+    ListNode(int x) :
+        val(x), next(NULL) {
+    }
+};
+*/
+class Solution {
+public:
+    ListNode* deleteDuplication(ListNode* head)
+    {
+        //zero node or one node
+        if(head == nullptr || head->next == nullptr)
+        {
+            return head;
+        }
+        //2 or more nodes
+        else
+        {
+            //manually assign a head node to original list
+            ListNode* t = new ListNode(-1);
+            t->next = head;
+            head = t;
+            
+            ListNode* it1 = head;
+            ListNode* it2 = head->next;
+            while(it2 && it2->next)
+            {
+                //duplication exists
+                if(it1->next->val == it2->next->val)
+                {
+                    int dup_val = it1->next->val;
+                    ListNode* delete_it = it1;
+                    while(delete_it->next && delete_it->next->val == dup_val)
+                    {
+                        ListNode* temp = delete_it->next;
+                        delete_it->next = temp->next;
+                        delete temp;
+                    }
+                    it2 = it1->next;
+                }
+                //go to next pair
+                else
+                {
+                    it1 = it1->next;
+                    it2 = it2->next;
+                }
+            }
+            
+            t = head;
+            head = head->next;
+            delete t;
+            return head;
+        }
+    }
+};
