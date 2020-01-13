@@ -1,0 +1,27 @@
+/*
+struct ListNode {
+    int val;
+    struct ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};*/
+class Palindrome {
+public:
+    bool isPalindrome(ListNode* pHead) {
+        vector<int> v;
+        while(pHead)
+        {
+            v.push_back(pHead->val);
+            pHead = pHead->next;
+        }
+        if(v.size() <= 1)
+            return true;
+        auto it1 = v.begin(), it2 = v.end() - 1;
+        while(it1 < it2)
+        {
+            if(*it1 != *it2)
+                return false;
+            it1++; it2--;
+        }
+        return true;
+    }
+};
