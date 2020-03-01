@@ -18,3 +18,18 @@ public:
         }
     }
 };
+
+class ReverseEqual {
+public:
+    bool checkReverseEqual(string s1, string s2) {
+        if(s1.size() != s2.size())
+            return false;
+        else if(s1.empty() && s2.empty())
+            return true;
+        else
+        {
+            s1 = s1 + s1;
+            return strstr(s1.c_str(), s2.c_str()) != nullptr;
+        }
+    }
+};
